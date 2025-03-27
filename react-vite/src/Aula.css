@@ -1,0 +1,161 @@
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(245, 245, 245);
+    height: 500px;
+    width: 100%;
+}
+
+.Filho1 {
+    background-color: rgb(255, 243, 243);
+    flex: 1;
+    display: flex;
+    height: 100%;
+ 
+}
+
+.Filho2 {
+    background-color: rgb(0, 0, 0);
+    flex: 1;
+    display: flex;
+}
+
+.Filho3 {
+    background-color: rgb(0, 0, 0);
+    flex: 1;
+    display: flex;
+
+}
+
+.Neto1 {
+    background-color: rgb(255, 0, 0);
+    height: 100%;
+    flex: 1;
+
+}
+
+.Neto2 {
+    background-color: rgb(255, 238, 0);
+    height: 100%;
+    flex-direction: column;
+    flex: 2;
+}
+
+.Neto3 {
+    background-color: rgb(0, 170, 28);
+    height: 100%;
+    flex: 1;
+}
+
+
+.Neto2-1 {
+    background-color: rgb(9, 0, 131);
+    height: 100%;
+    flex: 1;
+}
+.Neto2-2 {
+    background-color: rgb(58, 84, 233);
+    height: 100%;
+    flex: 1;
+}
+
+/* Neto 3 terceira linha das div*/
+
+.Neto3-1 {
+    background-color: rgb(94, 0, 102);
+    height: 100%;
+    flex: 2;
+}
+.Neto3-2 {
+    background-color: rgb(91, 92, 100);
+    height: 100%;
+    flex: 1;
+}
+
+.Bneto2-1 {
+    background-color: rgb(199, 80, 11);
+    height: 50%;
+    flex: 2;
+}
+
+.Bneto2-2{
+    display: flex;
+    background-color: rgb(253, 137, 4);
+    height: 100%;
+    flex: 2;
+}
+.Bneto2-1-1{    
+    display: flex;
+    background-color: rgb(107, 107, 107);
+    height: 100%;
+    flex: 1;
+}
+.Bneto2-2-1{
+    flex: 1;
+    flex-direction:column;
+        background-color: brown;
+}
+.Bneto2-2-2{
+    background-color: aqua;
+    flex: 2;
+}
+.Bneto2-2-1-1{
+    background-color: aqua;
+    flex: 2;
+}
+.Bneto2-2-1-2{
+    flex: 1;
+    flex-direction:column;
+        background-color: brown;
+}
+/* AULA 03-02-2025 NOVA*/
+.Flexdirection1{
+    height: 300px;
+    display: flex;
+    background-color: aqua;
+    justify-content: space-between;
+    align-items: center;
+
+    
+
+}
+.Azul1{
+    background-color: blue;
+    flex-direction: row;
+    height: 50px;
+    width: 50px;
+
+}
+.Azul2{
+    background-color: blue;
+    flex-direction: row;
+    height: 50px;
+    width: 50px;
+
+}
+.Azul3{
+    background-color: blue;
+    flex-direction: row;
+    height: 50px;
+    width: 50px;
+
+}
+.Azul4{
+    background-color: blue;
+    flex-direction: row;
+    height: 50px;
+    width: 50px;
+
+}
+.Vermelho{
+    align-self: flex-end;
+    counter-reset: flex;
+    align-items: flex-end;
+    background-color: rgb(236, 11, 11);
+    height: 50px;
+    width: 50px;
+
+}
+
+

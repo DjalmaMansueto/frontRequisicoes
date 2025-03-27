@@ -1,0 +1,83 @@
+.Container{
+    height: 200px;
+    width: 100%;
+    background-color: blueviolet;   
+    
+    display: flex;
+}
+.Menu{
+    /* text-align: center; */
+    justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(56, 29, 65);
+    width: 100%;
+    height: 100px;
+}
+.Botao{
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    place-items: center;
+    color: rgb(201, 192, 192);
+    text-align: center;
+    flex-direction: row;
+    border-radius: 9%;
+    background-color: rgb(142, 1, 177);
+    width: 150px;
+    height: 50px;
+
+
+}
+
+
+/* ESTILIZAÇÃO DAS LISTAS */
+
+.Lista-Card{
+    background-color: blueviolet;
+    height: 100px;
+    width: 100px;
+}
+
+
+
+
+/* Calculadora */
+
+.Calculadora{
+    background-color: rgb(175, 171, 171);
+height: 200px;
+width: 200px;
+justify-content: center;
+
+}
+.botaocalculadora{
+    background-color: aqua;
+
+}
+.InputCalculadora{
+    border: 2px;
+}
+
+
+
+/*  aula type   */
+
+
+
+
+img{
+    width: 100px;
+    height: 100px;
+}
+
+.CardProdutos{
+    flex-direction: column;
+    justify-content: center;
+    
+
+
+}
+
+
