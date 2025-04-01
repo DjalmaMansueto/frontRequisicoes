@@ -1,98 +1,125 @@
 import Cabecalho from "../Componentes/Cabeçalho";
 import { Usuario } from "../Types/Usuario";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
-function RequisicoesPost(){
-    const [usuario, setUsuario] = useState<Usuario[]>([]);
 
-    const [loading, setLoading] = useState(false)
+function RequisicaoesPost(){
+    
+
+    //FUNÇÃO QUE ESTA ADD A INFORMAÇÃO
+    const handleAddClick = async () => {
+        if(addTitleText && addTextArea){
+            let response = await fetch('https://jsonplaceholder.typicode.com/posts',
+            {
+                method: 'Post',
+                body: JSON.stringify
+                ({
+                    title: addTitleText,
+                    body: addTextArea,
+                    userID: 1
+                }),
  
-    const carregarUsuario = async () => {
-        setLoading(true);
-
-       try{
-        let response = await fetch('https://jsonplaceholder.typicode.com/todos');
-        let json = await response.json();
-        const dataArray = Array.isArray(json) ? json: [json]
-        setLoading(false);
-
-        setUsuario(dataArray);
-       } catch (erro){
-        setLoading(false)
-        alert('Falha ao carregar os Usuario. Tente novamente mais tarde.')
-        console.error(erro);
-       }
+                headers: {
+                    'Content-Type':'Application/json'
+                }
+            });
+            let json = await response.json();
+ 
+            console.log(json);
+ 
+            if(json.id){
+                alert('Post Adicionado com sucesso')
+                setUsuario( (usuario) => [...usuario, json]);
+            }
+            else {
+                alert('Ocorreu alguns Falhas')
+            }
+        }
+        else{
+            alert('Prencha as informações');
+        }
     }
-       const [novoid, Setnovoid] = useState('');
-       
-       function ChangeNovoID(Modificacao: React.ChangeEvent<HTMLInputElement>){
-        Setnovoid(Modificacao.target.value)
-    }
+ 
+    //FUNÇÕES PARA ALTERAR OS CAMPOS CRIADOS NA TELA ADICIONAR POST
+    const [addTitleText, setaddTitleText] = useState('');
+    const handleAddTitleChange = (e: ChangeEvent<HTMLInputElement>) =>(
+        setaddTitleText(e.target.value)
+    )
+ 
+    const [addTextArea, setaddTextArea] = useState('');
+    const handleTextAreaChange = (e: ChangeEvent<HTMLTextAreaElement>) => (
+        setaddTextArea(e.target.value)
+    )
+ 
+    const [usuario, setUsuario] = useState<Usuario[]>([]);
+ 
+    //FUNÇÃO PARA USAR O LOADING
+    const [loading, setLoading] = useState(false);
+ 
+        // useEffect(() => {
+        //     carregarUsuario();
+        // },[])
+ 
+        const carregarUsuario = async () => {
+            setLoading(true);
+            try{
+                let response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+                let json = await response.json();
+                const dataArray = Array.isArray(json) ? json: [json];
+                setLoading(false);
+ 
+                setUsuario(dataArray);
+            }
+            catch(erro){
+                setLoading(false);
+                alert('Falha ao carrgar usuários');
+                console.error(erro);
+            }
+           
+        }
  
     return(
-
-        <div><Cabecalho/>
-         
-            <h1>Pagina Exemplos de Requisições</h1>
-         <button onClick={carregarUsuario}>Carregar Usuario</button>
-         <h2>Adicionar Novo Post</h2>
-         <input type="text" placeholder='Digite um Título'/>
-         <br />
-         <textarea placeholder="campo para digitar" />
-         <br />
-         Digite o novo ID: {novoid}
-         <br />
-         <br />
-         <button>Adicionar</button>
-         <h3>Total Usuarios:{usuario.length}</h3>
-         <hr />
-         <h2>Lista de Usuarios</h2>
-    
-
-            {loading&&
-            <div>Carregando conteúdo ... </div>
-            }
-            {!loading&&
-            <div>
-                <div className="CardProdutos">
-                <ul>
-                {usuario.map((item, index) => (
-                    <div key={index} >
-                    <li>
-                        <h2>User ID: {item.id}</h2>
-                        <p>Título: {item.title}</p>
-                    </li>
-                    </div>
-                  ))}
-                </ul>
-                </div>
-            </div>}
-            </div>
-
-            
-
-
-
-
-            
-)
-}
-        
+        <>
+        <Cabecalho/>
+            <h1>Listagem de Usuários</h1>
+            <br />
+            <button onClick={carregarUsuario}>Carregar Usuários</button>
+            <br />
+            <br />
+            <h2>Total de Usuários: {usuario.length}</h2>
+            {loading &&
+             <div className="div-carregamento">
+                <img className="carregando" src="https://cdn.pixabay.com/animation/2023/08/11/21/18/21-18-05-265_512.gif"/>
+             </div>}
  
-    //     <div>
-    //         <h1>Pagina Exemplos de Requisições</h1>
-    // <button onClick={carregarUsuario}>Carregar Usuario</button>
-    //         <br />
-    // <h3>total Usuario</h3>
-    // <hr />
-    // <h2>Lista de Usuarios</h2>
-    
-    //         {loading&&
-    //         <div>Carregando conteúdo ... </div>
-            
-          
-  
-  
-
-
- export default RequisicoesPost;
+            {!loading &&
+                <div>
+                    {usuario.map((item, index) => (
+                    <div key={index}>
+                        <p>User Id: {item.id}</p>
+                        <p>Title: {item.title}</p>
+                    </div>
+                ))}
+            </div>
+            }
+ 
+            <hr />
+            <h1>Adicionar novo Post</h1>
+            <br />
+            <input
+                type="text"
+                placeholder="Digite o Titulo"
+                onChange={handleAddTitleChange}/>
+            <br />
+            <br/>
+            <textarea
+                placeholder="Digite a descrição do texto"
+                onChange={handleTextAreaChange}/>
+            <br />
+            <button onClick={handleAddClick}>Adicionar</button>
+   
+        </>
+    )
+}
+ 
+export default RequisicaoesPost
