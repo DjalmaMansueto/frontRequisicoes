@@ -2,7 +2,6 @@ import Cabecalho from "../Componentes/Cabeçalho";
 import { Usuario } from "../Types/Usuario";
 import { ChangeEvent, useState } from "react";
 
-
 function RequisicaoesPost(){
     
 
@@ -83,7 +82,7 @@ function RequisicaoesPost(){
         <Cabecalho/>
             <h1>Listagem de Usuários</h1>
             <br />
-            <button onClick={carregarUsuario}>Carregar Usuários</button>
+            {/* <button onClick={carregarUsuario}>Carregar Usuários</button>
             <br />
             <br />
             <h2>Total de Usuários: {usuario.length}</h2>
@@ -92,16 +91,11 @@ function RequisicaoesPost(){
                 <img className="carregando" src="https://cdn.pixabay.com/animation/2023/08/11/21/18/21-18-05-265_512.gif"/>
              </div>}
  
-            {!loading &&
+            {!loading && */}
                 <div>
-                    {usuario.map((item, index) => (
-                    <div key={index}>
-                        <p>User Id: {item.id}</p>
-                        <p>Title: {item.title}</p>
-                    </div>
-                ))}
+                    
             </div>
-            }
+            
  
             <hr />
             <h1>Adicionar novo Post</h1>
