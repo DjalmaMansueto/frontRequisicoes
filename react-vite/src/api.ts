@@ -1,18 +1,17 @@
 
-
 export const api = {
 
     CarregarTodosUsuarios: async () => {
-        let response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+        let response = await fetch('https://jsonplaceholder.typicode.com/todos')
         let json = await response.json();
         return json;
     },
 
-    //  CarregarTodosUsuarios: async () => {
-    //      let response = await fetch('https://jsonplaceholder.typicode.com/todos/');
-    //      let json = await response.json();
-    //      return json;
-    //  },
+     CarregarUsuarioUnico: async (Param: string) => {
+         let response = await fetch('https://jsonplaceholder.typicode.com/todos' + Param);
+         let json = await response.json();
+         return json;
+     },
      AdicionarUsuarios: async (title: string, body: string, userId: number) => {
      let response = await fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
@@ -20,7 +19,7 @@ export const api = {
         ({
             title,
             body,
-            userID: 1
+            userId
         }),
         headers: {
             "Content-Type" : "application/json"

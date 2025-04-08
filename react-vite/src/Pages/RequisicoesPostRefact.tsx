@@ -12,6 +12,7 @@ function RequisicoesPostRefact() {
  
     const [usuarios, setUsuarios] = useState<Usuario[]>([]);
     const[loading, setLoading] = useState(false);
+    const [ParamBusca, setparamBusca] = useState()
  
     const carregarUsuarios = async () => {
         setLoading(true)
